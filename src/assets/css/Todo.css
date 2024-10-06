@@ -1,0 +1,99 @@
+.todo-container {
+  max-width: 800px;
+  width: 90%;
+  margin: 0 auto;
+  padding: 32px 20px;
+}
+
+.empty-todo {
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.page-container {
+  max-width: 1440px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  min-height: 100vh;
+  padding: 40px 20px;
+}
+
+.todo-heading {
+  font-size: clamp(2rem, 4vw, 2.5rem);
+  color: var(--accent-primary);
+  margin-bottom: 8px;
+  text-align: center;
+  font-weight: 700;
+}
+
+.todo-description {
+  text-align: center;
+  color: var(--text-secondary);
+  margin-bottom: 24px;
+  font-size: clamp(1rem, 2vw, 1.1rem);
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.todo-tabs {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  padding: 10px;
+  margin-bottom: 32px;
+  background-color: var(--bg-secondary);
+  border-radius: var(--border-radius);
+  margin-top: 5px;
+}
+
+.tab-btn {
+  background-color: var(--bg-secondary);
+  color: var(--text-secondary);
+  padding: 10px 24px;
+  border-radius: var(--border-radius);
+  font-weight: 500;
+  transition: var(--transition);
+  border: 2px solid var(--accent-primary);
+}
+
+.tab-btn:hover {
+  background-color: var(--bg-primary);
+  border-color: var(--accent-primary);
+  color: var(--accent-primary);
+}
+
+.tab-btn.active {
+  background-color: var(--accent-primary);
+  color: var(--bg-primary);
+}
+
+.todo-item-form-container {
+  margin-bottom: 32px;
+  max-width: 700px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.todo-list {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  max-width: 700px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+@media (max-width: 500px) {
+  .todo-tabs {
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .tab-btn {
+    width: 100%;
+  }
+}

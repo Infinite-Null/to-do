@@ -1,0 +1,125 @@
+.todo-item {
+  background: var(--bg-secondary);
+  border-radius: var(--border-radius);
+  padding: 16px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  transition: var(--transition);
+}
+
+.todo-item:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.todo-item p {
+  flex-grow: 1;
+  padding: 10px;
+  margin: 0;
+  max-width: 100%;
+  white-space: nowrap;
+  overflow-x: auto;
+  overflow-y: hidden;
+  scrollbar-width: thin;
+  scrollbar-color: var(--accent-primary) var(--bg-tertiary);
+}
+
+.todo-item p::-webkit-scrollbar {
+  height: 4px;
+}
+
+.todo-item p::-webkit-scrollbar-track {
+  background: var(--bg-tertiary);
+  border-radius: 2px;
+}
+
+.todo-item p::-webkit-scrollbar-thumb {
+  background: var(--accent-primary);
+  border-radius: 2px;
+}
+
+.todo-item form {
+  display: flex;
+  gap: 8px;
+  flex-grow: 1;
+}
+
+.todo-item form input {
+  flex-grow: 1;
+}
+
+.buttons-container {
+  display: flex;
+  gap: 10px;
+}
+
+.todo-item button {
+  font-size: 14px;
+  padding: 8px 12px;
+  min-width: 90px;
+}
+
+.todo-item button.edit-btn {
+  background-color: var(--accent-secondary);
+  color: var(--bg-primary);
+}
+
+.todo-item button.toggle-btn {
+  background-color: var(--success);
+  color: var(--bg-primary);
+}
+
+.todo-item button.delete-btn {
+  background-color: var(--danger);
+  color: var(--bg-primary);
+}
+
+.todo-completed {
+  background: var(--text-secondary);
+}
+
+.todo-completed p {
+  text-decoration: line-through;
+  color: #000;
+  opacity: 0.8;
+}
+
+@media (max-width: 600px) {
+  .todo-item {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .todo-content {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 12px;
+  }
+
+  .todo-title {
+    font-size: 16px;
+  }
+
+  .todo-actions {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 8px;
+  }
+
+  .todo-item form {
+    flex-direction: column;
+  }
+
+  .todo-item form input {
+    margin-bottom: 8px;
+  }
+
+  .todo-item form button {
+    width: 100%;
+  }
+
+  .todo-item p {
+    max-width: 100%;
+  }
+}
