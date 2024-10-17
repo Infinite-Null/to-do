@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import ConfirmBox from '../components/ConfirmBox';
 import '../assets/css/EachTodo.css';
 import Alert from './Alert';
@@ -20,6 +20,7 @@ function EachTodo({ todo, updateTodo, toggleTodoStatus, deleteTodo, inputRef }) 
     const [newTitle, setNewTitle] = useState(todo?.title || 'Untitled');
     const [showDeleteConfirm, setShowDeleteConfirm] = useState(false);
     const [alert, setAlert] = useState({ isOpen: false, message: '', type: 'error' });
+    const updateInputRef = useRef(null);
 
     /**
      * handleEditClick switches the component to editing mode.
@@ -48,17 +49,12 @@ function EachTodo({ todo, updateTodo, toggleTodoStatus, deleteTodo, inputRef }) 
                 type: 'error'
             });
             setNewTitle(oldTitle);
-            inputRef?.current?.focus();
             setIsEditing(false);
+            inputRef?.current?.focus();
             return;
         }
 
         if (newTitle === oldTitle) {
-            setAlert({
-                isOpen: true,
-                message: 'No changes made to todo title',
-                type: 'warning'
-            });
             setIsEditing(false);
             return;
         }
@@ -113,7 +109,7 @@ function EachTodo({ todo, updateTodo, toggleTodoStatus, deleteTodo, inputRef }) 
      * @return {void}
      */
     const handleDeleteCancel = () => {
-        inputRef.current.focus();
+        inputRef?.current?.focus();
         setShowDeleteConfirm(false);
     };
 
@@ -137,16 +133,17 @@ function EachTodo({ todo, updateTodo, toggleTodoStatus, deleteTodo, inputRef }) 
     };
 
     useEffect(() => {
-        if (!isEditing) {
+        if (!isEditing && !alert.isOpen) {
             inputRef?.current?.focus();
         }
-    }, [isEditing, inputRef]);
+    }, [isEditing, inputRef, alert]);
 
     return (
         <li className={`todo-item ${todo.isDone ? 'todo-completed' : ''}`}>
             {isEditing ? (
                 <form onSubmit={handleSaveClick}>
                     <input
+                        ref={updateInputRef}
                         autoFocus
                         type="text"
                         aria-label="Update Todo"
@@ -177,12 +174,7 @@ function EachTodo({ todo, updateTodo, toggleTodoStatus, deleteTodo, inputRef }) 
                 onConfirm={handleDeleteConfirm}
                 onCancel={handleDeleteCancel}
             />
-            <Alert
-                isOpen={alert.isOpen}
-                message={alert.message}
-                type={alert.type}
-                onClose={closeAlert}
-            />
+            <Alert isOpen={alert.isOpen} message={alert.message} onClose={closeAlert} />
         </li>
     );
 }

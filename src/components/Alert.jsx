@@ -10,15 +10,15 @@ import '../assets/css/Alert.css';
  * @param {Function} props.onClose - Callback function when user clicks OK
  * @returns {JSX.Element|null}
  */
-const Alert = ({ isOpen, message, type = 'error', onClose }) => {
+const Alert = ({ isOpen, message, onClose }) => {
     if (!isOpen) {
         return null;
     }
 
     return (
         <div className="alert-overlay">
-            <div className={`alert-container ${type}`}>
-                <h2 className="alert-title">{type.charAt(0).toUpperCase() + type.slice(1)}</h2>
+            <div className="alert-container">
+                <h2 className="alert-title">Alert!</h2>
                 <p className="alert-message">{message}</p>
                 <div className="alert-buttons">
                     <button onClick={onClose} className="alert-ok-button">

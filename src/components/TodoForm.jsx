@@ -73,12 +73,7 @@ function TodoForm({ addTodo, inputRef }) {
                 placeholder="Enter your task"
             />
             <button type="submit">Add Todo</button>
-            <Alert
-                isOpen={alert.isOpen}
-                message={alert.message}
-                type={alert.type}
-                onClose={closeAlert}
-            />
+            <Alert isOpen={alert.isOpen} message={alert.message} onClose={closeAlert} />
         </form>
     );
 }
