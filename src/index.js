@@ -13,7 +13,7 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 
 // Render the App component within the root element, with React.StrictMode enabled for detecting potential issues.
 root.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>
+    <React.StrictMode>
+        <App />
+    </React.StrictMode>
 );

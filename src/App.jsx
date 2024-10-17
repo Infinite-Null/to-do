@@ -10,11 +10,11 @@ import Todo from './components/Todo';
  * @returns {JSX.Element} The rendered Todo component.
  */
 function App() {
-  return (
-    <div className="App">
-      <Todo />
-    </div>
-  );
+    return (
+        <div className="App">
+            <Todo />
+        </div>
+    );
 }
 
 export default App;

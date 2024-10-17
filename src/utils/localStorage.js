@@ -6,32 +6,32 @@
  * @returns {Array} An array of todo objects or an empty array if no valid data is found.
  */
 const getLocalData = () => {
-  try {
-    const data = localStorage.getItem('todoData');
+    try {
+        const data = localStorage.getItem('todoData');
 
-    if (!data) {
-      return [];
+        if (!data) {
+            return [];
+        }
+
+        const parsedData = JSON.parse(data);
+
+        if (
+            !Array.isArray(parsedData) ||
+            !parsedData.every(
+                (item) =>
+                    item &&
+                    'string' === typeof item.id &&
+                    'string' === typeof item.title &&
+                    'boolean' === typeof item.isDone
+            )
+        ) {
+            return [];
+        }
+
+        return parsedData;
+    } catch {
+        return [];
     }
-
-    const parsedData = JSON.parse(data);
-
-    if (
-      !Array.isArray(parsedData) ||
-      !parsedData.every(
-        (item) =>
-          item &&
-          'string' === typeof item.id &&
-          'string' === typeof item.title &&
-          'boolean' === typeof item.is_Done
-      )
-    ) {
-      return [];
-    }
-
-    return parsedData;
-  } catch {
-    return [];
-  }
 };
 
 /**
@@ -43,11 +43,11 @@ const getLocalData = () => {
  * @return {void}
  */
 const setLocalData = (data) => {
-  try {
-    localStorage.setItem('todoData', JSON.stringify(data));
-  } catch {
-    localStorage.setItem('todoData', '[]');
-  }
+    try {
+        localStorage.setItem('todoData', JSON.stringify(data));
+    } catch {
+        localStorage.setItem('todoData', '[]');
+    }
 };
 
 export { getLocalData, setLocalData };
