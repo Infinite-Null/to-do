@@ -41,7 +41,11 @@ function EachTodo({ todo, updateTodo, toggleTodoStatus, deleteTodo, inputRef }) 
     const handleSaveClick = (e) => {
         e.preventDefault();
         const title = newTitle.trim();
-        setNewTitle(title);
+
+        if (title !== newTitle) {
+            setNewTitle(title);
+        }
+
         const oldTitle = todo?.title || 'Untitled';
 
         if ('' === title) {
