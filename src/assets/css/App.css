@@ -14,6 +14,7 @@
     --confirm-background: rgb(0, 0, 0, 0.5);
     --black: #000;
     --box-shadow: rgba(122, 162, 247, 0.2);
+    --light-shadow: rgba(0, 0, 0, 0.2);
 }
 
 body {

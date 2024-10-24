@@ -40,26 +40,29 @@ function EachTodo({ todo, updateTodo, toggleTodoStatus, deleteTodo, inputRef }) 
      */
     const handleSaveClick = (e) => {
         e.preventDefault();
+        const title = newTitle.trim();
+        setNewTitle(title);
         const oldTitle = todo?.title || 'Untitled';
 
-        if ('' === newTitle.trim()) {
+        if ('' === title) {
             setAlert({
                 isOpen: true,
                 message: 'Todo title cannot be empty',
                 type: 'error'
             });
-            setNewTitle(oldTitle);
+            setNewTitle(oldTitle.trim());
             setIsEditing(false);
             inputRef?.current?.focus();
             return;
         }
 
-        if (newTitle === oldTitle) {
+        if (title === oldTitle.trim()) {
             setIsEditing(false);
+            setNewTitle(oldTitle.trim());
             return;
         }
 
-        updateTodo(todo.id, newTitle.trim());
+        updateTodo(todo.id, title);
         setIsEditing(false);
     };
 

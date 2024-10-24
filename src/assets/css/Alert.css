@@ -15,7 +15,7 @@
     background-color: var(--bg-secondary);
     padding: 20px;
     border-radius: var(--border-radius);
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 2px 10px var(--light-shadow);
     width: 90%;
     max-width: 400px;
     border-left: 4px solid var(--danger);
